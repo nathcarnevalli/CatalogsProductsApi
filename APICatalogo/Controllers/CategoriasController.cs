@@ -27,7 +27,7 @@ namespace APICatalogo.Controllers
             return Ok(categorias);
         }
 
-        [HttpGet]
+        [HttpGet("produtos")]
         public ActionResult<IEnumerable<Categoria>> GetProdutosCategoria()
         {
             var categorias = _context.Categorias.Include(p => p.Produtos).AsNoTracking().ToList();
