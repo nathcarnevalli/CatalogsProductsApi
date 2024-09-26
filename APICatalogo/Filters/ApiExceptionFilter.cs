@@ -8,7 +8,7 @@ namespace APICatalogo.Filters
 
         private readonly ILogger<ApiExceptionFilter> _logger;
 
-        private ApiExceptionFilter(ILogger<ApiExceptionFilter> logger)
+        public ApiExceptionFilter(ILogger<ApiExceptionFilter> logger)
         {
             _logger = logger;
         }
