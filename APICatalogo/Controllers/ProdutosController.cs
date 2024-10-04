@@ -3,6 +3,7 @@ using APICatalogo.Models;
 using APICatalogo.Pagination;
 using APICatalogo.Repositories;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -111,6 +112,7 @@ namespace APICatalogo.Controllers
             return Ok(produtosDto);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<ProdutoDTO>> Post(ProdutoDTO produtoDto)
         {
@@ -128,7 +130,7 @@ namespace APICatalogo.Controllers
             return new CreatedAtRouteResult("ObterProduto", new { id = novoProdutoDto.ProdutoId }, novoProdutoDto);
         }
 
-
+        [Authorize]
         [HttpPut("{id:int}")]
         public async Task<ActionResult<ProdutoDTO>> Put(int id, ProdutoDTO produtoDto)
         {
@@ -147,6 +149,7 @@ namespace APICatalogo.Controllers
             return Ok(produtoAtualizadoDto);
         }
 
+        [Authorize]
         [HttpPatch("{id}/UpdatePartial")]
         public async Task<ActionResult<ProdutoDTOUpdateResponse>> Patch(int id, JsonPatchDocument<ProdutoDTOUpdateRequest> patchProdutoDto)
         {
@@ -180,6 +183,7 @@ namespace APICatalogo.Controllers
 
         }
 
+        [Authorize]
         [HttpDelete("{id:int}")]
         public async Task<ActionResult<ProdutoDTO>> Delete(int id)
         {

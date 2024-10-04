@@ -63,6 +63,7 @@ namespace APICatalogo.Controllers
             return Ok(categoriaDTO);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<CategoriaDTO>> Post(CategoriaDTO categoriaDTO)
         {
@@ -82,6 +83,7 @@ namespace APICatalogo.Controllers
             return new CreatedAtRouteResult("ObterCategoria", new {id = novaCategoriaDTO?.CategoriaId, categoria = novaCategoriaDTO});
         }
 
+        [Authorize]
         [HttpPut("{id:int}")]
         public async Task<ActionResult<CategoriaDTO>> Put(int id, CategoriaDTO categoriaDTO)
         {
@@ -101,6 +103,7 @@ namespace APICatalogo.Controllers
             return Ok(categoriaDtoAtualizada);
         }
 
+        [Authorize]
         [HttpDelete("{id:int}")]
         public async Task<ActionResult<CategoriaDTO>> Delete(int id)
         {
